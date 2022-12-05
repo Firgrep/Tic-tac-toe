@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-void print_board(std::vector<vector<char>> board)
+void print_board(std::vector<vector<char>> board) //Prints the board to the console.
 {
 	std::cout << " " << endl;
 	for (int i = 0; i < board.size(); i++)
@@ -16,7 +16,7 @@ void print_board(std::vector<vector<char>> board)
 	std::cout << endl;
 }
 
-void print_vector(std::vector<vector<int>> vect)
+void print_vector(std::vector<vector<int>> vect) //Prints a 2D int vector to the console. Helpful for testing and debugging.
 {
 	std::cout << "Here is the vector within the vector:" << endl;
 	for (int i = 0; i < vect.size(); i++)
@@ -29,7 +29,7 @@ void print_vector(std::vector<vector<int>> vect)
 	}
 }
 
-void greet()
+void greet() //Initial flavour text.
 {
 	std::cout << endl;
 	std::cout << "|==X====0====X==|" << endl;
@@ -40,14 +40,14 @@ void greet()
 	std::cout << endl;
 }
 
-vector<vector<int>> make_position(int row, int col)
+vector<vector<int>> make_position(int row, int col) //Generates a 2D vector position out of two coordinates.
 {
 	std::vector<vector<int>> temp_pos;
 	temp_pos.push_back({ row, col });
 	return temp_pos;
 }
 
-bool pos_checker(vector<vector<int>> pos_list, vector<vector<int>> temp_pos)
+bool pos_checker(vector<vector<int>> pos_list, vector<vector<int>> temp_pos) //Checks two 2D vectors for duplicates. Returns true when no duplicates found, otherwise false.
 {
 	if (pos_list.empty())
 	{
@@ -71,7 +71,7 @@ bool pos_checker(vector<vector<int>> pos_list, vector<vector<int>> temp_pos)
 	}
 }
 
-std::vector<vector<int>> ai_selection_update(std::vector<vector<int>> ai_pos_list, std::vector<int> pos)
+std::vector<vector<int>> ai_selection_update(std::vector<vector<int>> ai_pos_list, std::vector<int> pos) //Updates (overwrites) the list of possible non-duplicate positions for the "AI" to randomly choose from on its turn. 
 {
 	for (int i = 0; i < ai_pos_list.size(); i++)
 	{
@@ -83,7 +83,7 @@ std::vector<vector<int>> ai_selection_update(std::vector<vector<int>> ai_pos_lis
 	return ai_pos_list;
 }
 
-int victory_conditions(vector<vector<char>> board)
+int victory_conditions(vector<vector<char>> board) //Conditions for winning the game. These are statically determined based on elements on the board.
 {
 	//---User victory conditions---
 	//Horizontal user:
