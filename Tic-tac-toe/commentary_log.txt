@@ -1,0 +1,29 @@
+
+Run-time slowdown issue: 
+Generating the AI position through this "brute force" randomizer keeps repeating the same generated random integers far too often, 
+creating a "lag" in the program (see below). Propose to use an existing vector to randomly choose from to avoid generating from scratch
+and only the check this against existing positions. 
+
+Example:
+no_collision = false;
+		while (no_collision == false)
+		{
+			srand(time(NULL));
+			int row = std::rand() % 3;
+			int col = std::rand() % 3;
+
+			std::cout << "ai row:" << row << endl;
+			std::cout << "ai col:" << col << endl;
+
+			temp_ai_pos = make_position(row, col);
+			no_collision = pos_checker(pos_list, temp_ai_pos);
+
+			if (no_collision == true)
+			{
+				for (int i = 0; i < temp_ai_pos.size(); i++)
+				{
+					pos_list.push_back(temp_ai_pos[i]);
+				}
+				board[row][col] = 'O';
+			}
+		}
